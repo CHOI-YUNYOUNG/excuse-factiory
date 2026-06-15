@@ -57,9 +57,11 @@ export default function RankingPage() {
     next.add(id)
     setVotedIds(next)
     localStorage.setItem('votedExcuses', JSON.stringify([...next]))
-    setExcuses((prev) =>
-      prev.map((e) => (e.id === id ? { ...e, votes: e.votes + 1 } : e))
-    )
+    // votes 카운트 올리고 즉시 재정렬
+    setExcuses((prev) => {
+      const updated = prev.map((e) => (e.id === id ? { ...e, votes: e.votes + 1 } : e))
+      return [...updated].sort((a, b) => b.votes - a.votes || new Date(b.created_at).getTime() - new Date(a.created_at).getTime())
+    })
   }
 
   return (
