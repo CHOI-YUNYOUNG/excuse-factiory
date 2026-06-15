@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
 
     const message = await client.messages.create({
       model: 'claude-haiku-4-5-20251001',
-      max_tokens: 900,
+      max_tokens: 1400,
       messages: [
         {
           role: 'user',
@@ -44,9 +44,13 @@ export async function POST(request: NextRequest) {
 카테고리: ${CATEGORY_LABELS[category]}
 톤: ${tone} — ${TONE_DESCS[tone]}
 
-규칙: 구체적 인물/사건 포함, 3~4문장, 서로 다른 접근법, 한국어
+규칙:
+- 각 변명은 반드시 5문장 이상
+- 구체적인 인물·장소·사건을 포함해 현실감 있게
+- 서로 완전히 다른 접근법 (다른 원인, 다른 등장인물)
+- 한국어, 지정된 톤 철저히 유지
 
-{"excuses":["변명1","변명2","변명3","변명4"]}`,
+{"excuses":["변명1(5문장 이상)","변명2(5문장 이상)","변명3(5문장 이상)","변명4(5문장 이상)"]}`,
         },
       ],
     })
