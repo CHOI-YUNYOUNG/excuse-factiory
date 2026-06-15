@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
 
     const message = await client.messages.create({
       model: 'claude-haiku-4-5-20251001',
-      max_tokens: 600,
+      max_tokens: 900,
       messages: [
         {
           role: 'user',
@@ -44,7 +44,7 @@ export async function POST(request: NextRequest) {
 카테고리: ${CATEGORY_LABELS[category]}
 톤: ${tone} — ${TONE_DESCS[tone]}
 
-규칙: 구체적 인물/사건 포함, 2~3문장, 서로 다른 접근법, 한국어
+규칙: 구체적 인물/사건 포함, 3~4문장, 서로 다른 접근법, 한국어
 
 {"excuses":["변명1","변명2","변명3","변명4"]}`,
         },

@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
 
     const message = await client.messages.create({
       model: 'claude-haiku-4-5-20251001',
-      max_tokens: 400,
+      max_tokens: 600,
       messages: [
         {
           role: 'user',
@@ -36,7 +36,7 @@ export async function POST(request: NextRequest) {
 변명: "${excuse}"
 캐릭터: ${LISTENER_DESCS[listenerType]}
 
-규칙: 2~3문장 실제 대화체, 캐릭터 감정 명확히, believability는 이 캐릭터가 믿을 확률(1~10)
+규칙: 3~4문장 실제 대화체, 캐릭터 감정 명확히, believability는 이 캐릭터가 믿을 확률(1~10)
 
 {"reaction":"대사","believability":7}`,
         },
