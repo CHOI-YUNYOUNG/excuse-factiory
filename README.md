@@ -50,8 +50,8 @@ excuse-factiory/
 │   │   ├── BeliefBar.tsx             # 믿어줄 확률 시각화 바
 │   │   └── RankingCard.tsx           # 랭킹 카드 + 투표 버튼
 │   ├── api/
-│   │   ├── generate-excuse/route.ts  # 변명 생성 (Gemini API)
-│   │   ├── predict-reaction/route.ts # 반응 예측 (Gemini API)
+│   │   ├── generate-excuse/route.ts  # 변명 생성 (Claude Haiku)
+│   │   ├── predict-reaction/route.ts # 반응 예측 (Claude Haiku)
 │   │   └── excuses/
 │   │       ├── route.ts              # 변명 저장/조회 (Supabase)
 │   │       └── [id]/vote/route.ts    # 투표 (중복 방지)
@@ -67,7 +67,7 @@ excuse-factiory/
 ## 🛠️ 기술 스택
 
 - **Frontend**: Next.js 16 (App Router) + TypeScript + Tailwind CSS v4
-- **AI**: Google Gemini API (`gemini-2.5-flash-lite`)
+- **AI**: Anthropic Claude API (`claude-haiku-4-5`)
 - **DB**: Supabase (PostgreSQL) — 변명 저장, 투표, 중복 방지
 - **배포**: Vercel
 
@@ -82,7 +82,7 @@ npm install
 # 환경변수 설정
 cp .env.example .env.local
 # .env.local에 아래 값 입력:
-# GEMINI_API_KEY=...
+# ANTHROPIC_API_KEY=...
 # NEXT_PUBLIC_SUPABASE_URL=...
 # NEXT_PUBLIC_SUPABASE_ANON_KEY=...
 
@@ -145,7 +145,6 @@ create table votes_log (
 - **변명 언어 설정** — 영어, 일본어 변명 생성 (해외 출장 지각 대비)
 
 ### 🤯 언젠가는 (TMI 급)
-- **변명 성우** — TTS로 변명을 실제로 읽어주는 기능. 목소리도 톤별로 다르게
 - **변명 이미지 생성** — "차가 막혔다"는 변명에 맞는 극적인 교통체증 이미지 자동 생성
 - **변명 분석 리포트** — "당신은 주로 지각 변명을 쓰며, 성공률은 42%입니다"
 
